@@ -8,11 +8,17 @@ namespace ConsoleAppLB3
 {
     internal class Transportation
     {
-        public string FirmName;
-        public double[] TrukLoadCopacity;
-        public decimal CostPerTon;
-        public decimal TotalCargoWeight;
-        public decimal TotalCost;
+        private string? firmName;
+        private double[]? trukLoadCopacity;
+        private decimal costPerTon;
+        private decimal totalCargoWeight;
+        private decimal totalCost;
+
+        public string? FirmName { get => firmName; set => firmName = value; }
+        public double[]? TrukLoadCopacity { get => trukLoadCopacity; set => trukLoadCopacity = value; }
+        public decimal CostPerTon { get => costPerTon; set => costPerTon = value; }
+        public decimal TotalCargoWeight { get => totalCargoWeight; set => totalCargoWeight = value; }
+        public decimal TotalCost { get => totalCost; set => totalCost = value; }
 
         public Transportation()
             : this("Noname", [0], 0, 0,0)
@@ -82,7 +88,7 @@ namespace ConsoleAppLB3
         
         }
 
-        public void m2()
+        public void DownProfit()
         {
             double MaxLoadCopacity = 0; 
             foreach (var item in TrukLoadCopacity)
@@ -97,7 +103,7 @@ namespace ConsoleAppLB3
 
         }
 
-        public decimal Rent(Transportation Transportation)
+        public decimal Profit(Transportation Transportation)
         {
             decimal _TotalCost = Transportation.TotalCost;
             decimal _CostPerTon = Transportation.CostPerTon;
@@ -112,13 +118,13 @@ namespace ConsoleAppLB3
             return rent;
         }
 
-        public bool ToRent(Transportation Transportation) {
+        public bool ToProfit(Transportation Transportation) {
             
             decimal rent1 = 0;
             decimal rent2 = 0;
 
-            rent1 = Rent(this);
-            rent2 = Rent(Transportation);
+            rent1 = Profit(this);
+            rent2 = Profit(Transportation);
 
             //Console.WriteLine($"{rent1}");
             //Console.WriteLine($"{rent2}");
@@ -129,15 +135,15 @@ namespace ConsoleAppLB3
                 return false;
         }
 
-        public static Transportation ToRents(Transportation Transportation1, Transportation Transportation2, Transportation Transportation3)
+        public static Transportation ToProfits(Transportation Transportation1, Transportation Transportation2, Transportation Transportation3)
         {
             decimal rent1 = 0;
             decimal rent2 = 0;
             decimal rent3 = 0;
 
-            rent1 = Transportation1.Rent(Transportation1); //a
-            rent2 = Transportation2.Rent(Transportation2); //b
-            rent3 = Transportation3.Rent(Transportation3); //c
+            rent1 = Transportation1.Profit(Transportation1); //a
+            rent2 = Transportation2.Profit(Transportation2); //b
+            rent3 = Transportation3.Profit(Transportation3); //c
 
             Console.WriteLine($"{rent1}");
             Console.WriteLine($"{rent2}");
