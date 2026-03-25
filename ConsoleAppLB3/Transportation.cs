@@ -166,7 +166,9 @@ namespace ConsoleAppLB3
 
         }
 
-
-
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
