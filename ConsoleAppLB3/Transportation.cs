@@ -20,6 +20,17 @@ namespace ConsoleAppLB3
         public decimal TotalCargoWeight { get => totalCargoWeight; set => totalCargoWeight = value; }
         public decimal TotalCost { get => totalCost; set => totalCost = value; }
 
+        public decimal Profitability
+        {
+            get
+            {
+                decimal revenue = CostPerTon * TotalCargoWeight;
+                if (revenue == 0) return 0;
+                return ((revenue - TotalCost) / revenue) * 100;
+            }
+        }
+
+
         public Transportation()
             : this("Noname", [0], 0, 0,0)
         { 
@@ -40,7 +51,7 @@ namespace ConsoleAppLB3
         {
             this.FirmName = firmName;
             //this.TrukLoadCopacity = trukLoadCopacity;
-            this.CostPerTon = costPerTon;
+            //this.CostPerTon = costPerTon;
             this.TotalCargoWeight = totalCargoWeight;
 
             if (CostPerTon >= 0 && CostPerTon < 10000)
@@ -93,7 +104,7 @@ namespace ConsoleAppLB3
             double MaxLoadCopacity = 0; 
             foreach (var item in TrukLoadCopacity)
             {
-                 MaxLoadCopacity = +item;
+                 MaxLoadCopacity += item;
             }
 
             if (((TotalCargoWeight * 100) / Convert.ToDecimal(MaxLoadCopacity)) < 60)
@@ -116,6 +127,13 @@ namespace ConsoleAppLB3
             rent = ((_revenue - _TotalCost) / _revenue) * Convert.ToDecimal(100);
 
             return rent;
+        }
+
+        public decimal Profit2()
+        {
+            decimal revenue = CostPerTon * TotalCargoWeight;
+            if (revenue == 0) return 0;
+            return ((revenue - TotalCost) / revenue) * 100;
         }
 
         public bool ToProfit(Transportation Transportation) {
@@ -141,13 +159,13 @@ namespace ConsoleAppLB3
             decimal rent2 = 0;
             decimal rent3 = 0;
 
-            rent1 = Transportation1.Profit(Transportation1); //a
-            rent2 = Transportation2.Profit(Transportation2); //b
-            rent3 = Transportation3.Profit(Transportation3); //c
+            rent1 = Transportation1.Profit2(); //a
+            rent2 = Transportation2.Profit2(); //b
+            rent3 = Transportation3.Profit2(); //c
 
-            Console.WriteLine($"{rent1}");
-            Console.WriteLine($"{rent2}");
-            Console.WriteLine($"{rent3}");
+            //Console.WriteLine($"{rent1}");
+            //Console.WriteLine($"{rent2}");
+            //Console.WriteLine($"{rent3}");
 
             decimal max = rent1;
 
