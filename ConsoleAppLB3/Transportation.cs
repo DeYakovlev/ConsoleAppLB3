@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 namespace ConsoleAppLB3
 {
     internal class Transportation
-    {
+    {   
+        //Задаем поля класса
         private string? firmName;
         private double[]? trukLoadCopacity;
         private decimal costPerTon;
         private decimal totalCargoWeight;
         private decimal totalCost;
 
+        //задаем свойства полей
         public string? FirmName { get => firmName; set => firmName = value; }
         public double[]? TrukLoadCopacity { get => trukLoadCopacity; set => trukLoadCopacity = value; }
         public decimal CostPerTon { get => costPerTon; set => costPerTon = value; }
@@ -30,7 +32,7 @@ namespace ConsoleAppLB3
             }
         }
 
-
+        //Созданеи конструкторов
         public Transportation()
             : this("Noname", [0], 0, 0,0)
         { 
@@ -52,7 +54,7 @@ namespace ConsoleAppLB3
             this.FirmName = firmName;
             //this.TrukLoadCopacity = trukLoadCopacity;
             //this.CostPerTon = costPerTon;
-            this.TotalCargoWeight = totalCargoWeight;
+            //this.TotalCargoWeight = totalCargoWeight;
 
             if (CostPerTon >= 0 && CostPerTon < 10000)
                 this.CostPerTon = costPerTon;
@@ -77,9 +79,11 @@ namespace ConsoleAppLB3
             }
 
             this.TrukLoadCopacity = normalizeArray;
-            TotalCost = totalCost;
+            //TotalCost = totalCost;
         }
 
+
+        //Создание методов
         public override string ToString()
         {
             string? ArrStr = null;

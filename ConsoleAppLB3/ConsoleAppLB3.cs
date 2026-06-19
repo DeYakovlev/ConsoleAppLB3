@@ -56,7 +56,7 @@ foreach (var item in t.TrukLoadCopacity)
         sb.Append(" ");
     sb.Append(item);
     first = false;
-  
+ 
 }
 string SRT = sb.ToString();
 Console.WriteLine($"Get TrukLoadCopacity : {SRT}");
@@ -120,5 +120,3 @@ Console.WriteLine($"Текущая фирма рентабельней? - {YesNo
 //Console.WriteLine(t.ToProfit(t2));
 
 //Console.WriteLine($"FirmName:{t.FirmName} TotalCargoWeight: {t.TotalCargoWeight} CostPerTon: {t.CostPerTon} TrukLoadCopacity:::{t.TrukLoadCopacity}");
-
-
